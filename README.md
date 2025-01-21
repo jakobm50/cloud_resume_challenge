@@ -11,6 +11,7 @@ This project is a submission for the **Cloud Resume Challenge** using **Microsof
   - [Backend](#backend)
   - [Infrastructure](#infrastructure)
   - [CI/CD](#cicd)
+  - [Both workflows use GitHub Actions, and Azure credentials are securely stored in GitHub Secrets.](#both-workflows-use-github-actions-and-azure-credentials-are-securely-stored-in-github-secrets)
   - [Technologies Used](#technologies-used)
   - [Setup Instructions](#setup-instructions)
     - [Frontend](#frontend-1)
@@ -62,14 +63,14 @@ All backend resources, such as the Azure Function and Cosmos DB, are deployed us
 
 ## CI/CD
 
-Two GitHub repositories are used:
+A single GitHub repository is used for this project, integrating both the frontend and backend components.
 
-1. **Frontend Repository:** Automatically deploys website updates to Azure Storage when new code is pushed.
-2. **Backend Repository:** Runs tests and deploys updates to the Azure Function when changes are made.
+- **Frontend:** Updates to the `frontend` folder automatically deploy to Azure Storage via a GitHub Actions workflow.
+- **Backend:** Changes to the `backend` folder trigger another GitHub Actions workflow to:
+  1. Run Python tests.
+  2. Deploy the updated Azure Function if the tests pass.
 
-**GitHub Actions** is used to implement CI/CD workflows.
-
----
+## Both workflows use GitHub Actions, and Azure credentials are securely stored in GitHub Secrets.
 
 ## Technologies Used
 
@@ -143,6 +144,8 @@ Two GitHub repositories are used:
 - For the **backend**, configure a workflow to run Python tests and deploy the Azure Function if the tests pass.
 
 2. Make sure to securely store any Azure credentials or secrets in GitHub Actions secrets.
+
+---
 
 ## Lessons Learned
 
